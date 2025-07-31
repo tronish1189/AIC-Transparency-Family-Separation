@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Thread Component</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h2 {
+            font-family: Karla, sans-serif;
+            padding: 20px;
+        }
+
+        .email-thread {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+
+        .email-list {
+            padding: 20px;
+        }
+
+        .email-item {
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .email-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .email-item.sent {
+            margin-left: 60px;
+        }
+
+        .email-item.received {
+            margin-right: 60px;
+        }
+
+        .email-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            font-family: Karla, sans-serif;
+            justify-content: space-between;
+        }
+
+        .email-item.sent .email-header {
+            background-color: #f0f9ff;
+            border-left: 4px solid #3366CC;
+        }
+
+        .email-item.received .email-header {
+            background-color: #f9fafb;
+            border-left: 4px solid #6b7280;
+        }
+
+        .sender-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: #111827;
+        }
+
+        .email-item.sent .avatar {
+            background: linear-gradient(135deg, #3366CC, #3366CC);
+            color: white;
+        }
+
+        .email-item.received .avatar {
+            background: linear-gradient(135deg, #E8EDED, #E8EDED);
+        }
+
+        .sender-details h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .sender-details .email-address {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .email-meta {
+            text-align: right;
+        }
+
+        .timestamp {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+
+        .email-body {
+            padding: 20px;
+            line-height: 1.6;
+            color: #374151;
+            font-family: Karla, sans-serif;
+            font-weight: 100;
+            background-color: white;
+        }
+
+        .email-subject {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .reply-indicator {
+            display: inline-block;
+            background-color: #ADE25D;
+            color: #383845;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+            text-transform: uppercase;
+        }
+
+        .redacted {
+            background-color: #153131;
+            color: #153131;
+        }
+
+        @media (max-width: 768px) {
+            .email-item.sent {
+                margin-left: 20px;
+            }
+
+            .email-item.received {
+                margin-right: 20px;
+            }
+
+            .email-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .email-meta {
+                text-align: left;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-thread">
+        <h2>Single Email Example</h2>
+
+        <div class="email-list">
+            <!-- First Email -->
+            <div class="email-item received">
+                <div class="email-header">
+                    <div class="sender-info">
+                        <div class="avatar">JS</div>
+                        <div class="sender-details">
+                            <h4>John Smith</h4>
+                            <div class="email-address">john.smith@company.com</div>
+                        </div>
+                    </div>
+                    <div class="email-meta">
+                        <div class="timestamp">Jan 28, 2025 at 9:15 AM</div>
+                    </div>
+                </div>
+                <div class="email-body">
+                    <div class="email-subject">Email Subject 1</div>
+                    <p>Consistency in reporting and data integrity are crucial for the correct reporting to USBP HQ. Please ensure that the attached spreadsheet is completed daily (Excel spreadsheet). Each station must submit their spreadsheet by COB following PAIC review to BBT Operations. I know the additional reporting is not fail-proof, however, until a SharePoint reporting method is established, we will have to continue to report the numbers via daily emails. As we receive additional information regarding reporting requirements, we will send it to the stations immediately.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="email-thread">
+        <h2>Email Thread Example 1</h2>
+
+        <div class="email-list">
+            <!-- First Email -->
+            <div class="email-item received">
+                <div class="email-header">
+                    <div class="sender-info">
+                        <div class="avatar">JS</div>
+                        <div class="sender-details">
+                            <h4>John Smith</h4>
+                            <div class="email-address">john.smith@company.com</div>
+                        </div>
+                    </div>
+                    <div class="email-meta">
+                        <div class="timestamp">Jan 28, 2025 at 9:15 AM</div>
+                    </div>
+                </div>
+                <div class="email-body">
+                    <div class="email-subject">Email Subject 2</div>
+                    <p>These numbers are going to be released tomorrow. What do we have any level of confidence in?</p>
+                </div>
+            </div>
+
+            <!-- Reply Email -->
+            <div class="email-item sent">
+                <div class="email-header">
+                    <div class="sender-info">
+                        <div class="avatar">ME</div>
+                        <div class="sender-details">
+                            <h4>You</h4>
+                            <div class="email-address">me@company.com</div>
+                        </div>
+                    </div>
+                    <div class="email-meta">
+                        <div class="timestamp">Jan 28, 2025 at 2:30 PM</div>
+                    </div>
+                </div>
+                <div class="email-body">
+                    <div class="email-subject"><span class="reply-indicator">Re:</span>Email Subject 2</div>
+                    <p>At this point for me…not very much. I also notice the HHS stats below are supposedly ZTP only, while we refer to "the class" stats, which includes cases pre ZTP…not sure if they are one in the same.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="email-thread">
+        <h2>Email Thread Example 2</h2>
+
+        <div class="email-list">
+            <!-- First Email -->
+            <div class="email-item received">
+                <div class="email-header">
+                    <div class="sender-info">
+                        <div class="avatar">JS</div>
+                        <div class="sender-details">
+                            <h4>John Smith</h4>
+                            <div class="email-address">john.smith@company.com</div>
+                        </div>
+                    </div>
+                    <div class="email-meta">
+                        <div class="timestamp">Jan 28, 2025 at 9:15 AM</div>
+                    </div>
+                </div>
+                <div class="email-body">
+                    <div class="email-subject">Email Subject 2</div>
+                    <p>There seems to be a fundamental lack of communication up and down the HHS chain.</p>
+                </div>
+            </div>
+
+            <!-- Reply Email -->
+            <div class="email-item sent">
+                <div class="email-header">
+                    <div class="sender-info">
+                        <div class="avatar">ME</div>
+                        <div class="sender-details">
+                            <h4>You</h4>
+                            <div class="email-address">me@company.com</div>
+                        </div>
+                    </div>
+                    <div class="email-meta">
+                        <div class="timestamp">Jan 28, 2025 at 2:30 PM</div>
+                    </div>
+                </div>
+                <div class="email-body">
+                    <div class="email-subject"><span class="reply-indicator">Re:</span>Email Subject 2</div>
+                    <p>Not to add more fuel to the fire, but <span class="redacted">[REDACTED]</span> said tonight that our rep in the HHS SOC said that HHS reps are spending more time there discussing HHS personnel travel plans and representation in different regions than actually going through the child and parent case records.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

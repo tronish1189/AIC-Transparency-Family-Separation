@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Events Component</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Karla, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .key-events-container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            position: relative;
+        }
+
+        .key-events-container::before {
+            animation-name: grow-timeline;
+            animation-duration: 4s;
+            animation-fill-mode: forwards;
+            height: 0%;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            background: black;
+            width: 2px;
+            content: "";
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: top;
+        }
+
+
+
+        .key-event-single {
+            width: 50%;
+            padding-right: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: right;
+            line-height: 1.45rem;
+            position: relative;
+        }
+
+        .key-event-single::before {
+            content: "";
+            position: absolute;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #3366cc;
+            border-radius: 50%;
+            right: -12px;
+        }
+
+        .key-events-container .key-event-single:nth-child(even) {
+            margin-left: auto;
+            text-align: left;
+            padding-left: 2.5rem;
+            padding-right: 0;
+        }
+
+        .key-events-container .key-event-single:nth-child(even)::before {
+            left: -12px;
+            right: auto;
+        }
+
+        .event-date {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes grow-timeline {
+            from {
+                height: 0%
+            }
+
+            to {
+                height: 90%
+            }
+        }
+
+        @media(max-width:600px) {
+            .key-events-container::before {
+                left: 40px;
+            }
+
+            .key-event-single {
+                width: 100%;
+                margin-left: auto;
+                text-align: left;
+                padding-left: 2.5rem;
+                padding-right: 0;
+            }
+
+            .key-event-single::before {
+                left: -12px;
+                right: auto;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Key Events</h1>
+    <div class="key-events-container">
+        <div class="key-event-single">
+            <p><span class="event-date">November 2017</span> Reporting Lomi Kriel of the Houston Chronicle identifies 22 families that have been separated after crossing the border in the El Paso Border Patrol Sector.</p>
+        </div>
+
+        <div class="key-event-single">
+            <p><span class="event-date">February 2018</span> Ms. L lawsuit is filed. The case challenges the practice of family separation and seeks class certification, benefitting a group of separated families.</p>
+        </div>
+
+        <div class="key-event-single">
+            <p><span class="event-date">April 6, 2018</span> Attorney General Jeff Sessions orders prosecution of all immigration violations.</p>
+        </div>
+
+        <div class="key-event-single">
+            <p><span class="event-date">May 4, 2018</span> Following Sessions’ memo, Secretary of Homeland Security Kirstjen Nielsen orders DHS personnel to categorically refer individuals who have entered the United States without authorization to be referred to the Department of Justice. Per the Sessions memo, this means that those parents will be charged with improper entry, and results in separation of thousands of families.</p>
+        </div>
+
+        <div class="key-event-single">
+            <p><span class="event-date">June 17, 2018</span> Secretary Nielsen, weeks after mandating family separation, tweets “We do not have a policy of separating families at the border. Period.”</p>
+        </div>
+        <div class="key-event-single">
+            <p><span class="event-date">June 18, 2018</span> ProPublica publishes audio of children screaming for their parents while Border Patrol agents crack jokes.</p>
+        </div>
+        <div class="key-event-single">
+            <p><span class="event-date">June 20, 2018</span> President Trump signed an Executive Order mandating the end to categorical family separation.</p>
+        </div>
+        <div class="key-event-single">
+            <p><span class="event-date">June 27, 2018</span> In the Ms. L litigation, Judge Sabraw grants class certification and imposes a preliminary injunction that mandates reunification of separated families by July 26, 2018.</p>
+        </div>
+
+    </div>
+</body>
+
+</html>

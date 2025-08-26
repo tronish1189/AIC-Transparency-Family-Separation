@@ -1,240 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Family Separation Process Flowchart</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        min-height: 100vh;
-        padding: 20px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Separation Process Flowchart</title>
+  <style>
+    :root {
+      --c-gray: #E8EDED;
+      --c-blue: #3366CC;
+      --c-green: #ADE25D;
+      --c-dark-gray: #383845;
+    }
 
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        padding: 40px;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      .title {
-        text-align: center;
-        color: #2c3e50;
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 40px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-      .flowchart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
 
-      .step {
-        background: #3366cc;
-        color: white;
-        padding: 20px 25px;
-        border-radius: 10px;
-        max-width: 600px;
-        text-align: center;
-        font-size: 16px;
-        line-height: 1.5;
-        box-shadow: 0 8px 20px rgba(51, 102, 204, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        font-family: Karla, sans-serif;
-      }
+    .title {
+      text-align: center;
+      color: #2c3e50;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-      .step:hover {
+    .flowchart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .step {
+      background: var(--c-gray);
+      color: var(--c-dark-gray);
+      padding: 20px 25px;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+      box-shadow: 0 8px 20px rgba(51, 102, 204, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      font-family: Karla, sans-serif;
+    }
+
+    .step--blue {
+      background: var(--c-blue);
+      color: white;
+
+      &:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 25px rgba(51, 102, 204, 0.3);
       }
+    }
 
-      .arrow {
-        width: 0;
-        height: 0;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        border-top: 20px solid #153131;
-        margin: 10px 0;
-        opacity: 0.7;
+    .step--green {
+      background: var(--c-green);
+      color: var(--c-dark-gray);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(173, 226, 93, 0.3);
+      }
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 20px solid var(--c-dark-gray);
+      margin: 10px 0;
+      opacity: 0.7;
+    }
+
+    .split-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px 0;
+    }
+
+    .split-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .split-arrow .arrow {
+      margin: 0;
+    }
+
+    .branch {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .branch-label {
+      background: var(--c-dark-gray);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: "Karla", sans-serif;
+    }
+
+    .branch-label--blue {
+      background: var(--c-blue);
+    }
+
+    .branch-label--green {
+      background: var(--c-green);
+      color: var(--c-dark-gray);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background: #2c3e50;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      .title {
+        font-size: 24px;
+      }
+
+      .step {
+        font-size: 14px;
+        padding: 15px 20px;
       }
 
       .split-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 40px;
-        width: 100%;
-        max-width: 800px;
-        margin: 20px 0;
-      }
-
-      .split-arrow {
-        display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .split-arrow::before {
-        content: "";
-        width: 60px;
-        height: 2px;
-        background: #7f8c8d;
-        opacity: 0.7;
-      }
-
-      .split-arrow .arrow {
-        margin: 0;
-      }
-
-      .branch {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 20px;
       }
+    }
+  </style>
+</head>
 
-      .branch-label {
-        background: #34495e;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: "Karla", sans-serif;
-      }
+<body>
+  <div class="container">
+    <h1 class="title">Family Separation Process</h1>
 
-      .step-number {
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        background: #2c3e50;
-        color: white;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        font-weight: bold;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
+    <div class="flowchart">
+      <div class="branch-label">Family</div>
+      <div class="step">
+        A family crosses the U.S.-Mexico border without permission. Most
+        separations occurred for individuals who did not cross at a port of
+        entry, but dozens of families were separated after crossing at ports
+        of entry as well.
+      </div>
 
-      @media (max-width: 768px) {
-        .container {
-          padding: 20px;
-        }
+      <div class="arrow"></div>
 
-        .title {
-          font-size: 24px;
-        }
+      <div class="step">U.S. Border Patrol staff apprehend the family.</div>
 
-        .step {
-          font-size: 14px;
-          padding: 15px 20px;
-        }
+      <div class="arrow"></div>
 
-        .split-container {
-          flex-direction: column;
-          gap: 20px;
-        }
-      }
-    </style>
-  </head>
+      <div class="step separation">
+        U.S. Border Patrol staff 'delete' the family unit in their software,
+        resulting in data showing the child is unaccompanied and the adult is
+        a single adult.
+      </div>
 
-  <body>
-    <div class="container">
-      <h1 class="title">Family Separation Process</h1>
+      <div class="arrow"></div>
 
-      <div class="flowchart">
-        <div class="step">
-          A family crosses the U.S.-Mexico border without permission. Most
-          separations occurred for individuals who did not cross at a port of
-          entry, but dozens of families were separated after crossing at ports
-          of entry as well.
-        </div>
-
-        <div class="arrow"></div>
-
-        <div class="step">U.S. Border Patrol staff apprehend the family.</div>
-
-        <div class="arrow"></div>
-
-        <div class="step separation">
-          U.S. Border Patrol staff 'delete' the family unit in their software,
-          resulting in data showing the child is unaccompanied and the adult is
-          a single adult.
-        </div>
-
-        <div class="arrow"></div>
-
-        <div class="split-container">
-          <div class="branch">
-            <div class="branch-label">Parent</div>
-            <div class="split-arrow">
-              <div class="arrow"></div>
-            </div>
-
-            <div class="step prosecution">
-              U.S. Border Patrol refers the adult to the U.S. Attorney's Office
-              for prosecution. The parent moves to the custody of the U.S.
-              Marshals Service.
-            </div>
-
+      <div class="split-container">
+        <div class="branch">
+          <div class="branch-label branch-label--blue">Parent</div>
+          <div class="split-arrow">
             <div class="arrow"></div>
-
-            <div class="step prosecution">
-              The U.S. Attorney's Office prosecutes the parent under federal
-              law. The parent is usually sentenced to a few days or to time
-              served.
-            </div>
-
-            <div class="arrow"></div>
-
-            <div class="step deportation">
-              After finishing the prison sentence, the parent is moved to ICE
-              custody and removed from the country under expedited removal
-              proceedings, without the right to see an immigration judge.
-            </div>
           </div>
 
-          <div class="branch">
-            <div class="branch-label">Child</div>
-            <div class="split-arrow">
-              <div class="arrow"></div>
-            </div>
+          <div class="step prosecution step--blue">
+            U.S. Border Patrol refers the adult to the U.S. Attorney's Office
+            for prosecution. The parent moves to the custody of the U.S.
+            Marshals Service.
+          </div>
 
-            <div class="step child-custody">
-              The child is referred to custody of the Office of Refugee
-              Resettlement within HHS.
-            </div>
+          <div class="arrow"></div>
 
+          <div class="step prosecution step--blue">
+            The U.S. Attorney's Office prosecutes the parent under federal
+            law. The parent is usually sentenced to a few days or to time
+            served.
+          </div>
+
+          <div class="arrow"></div>
+
+          <div class="step deportation step--blue">
+            After finishing the prison sentence, the parent is moved to ICE
+            custody and removed from the country under expedited removal
+            proceedings, without the right to see an immigration judge.
+          </div>
+        </div>
+
+        <div class="branch">
+          <div class="branch-label branch-label--green">Child</div>
+          <div class="split-arrow">
             <div class="arrow"></div>
+          </div>
 
-            <div class="step deportation">
-              ICE issues a Notice to Appear to the child, initiating removal
-              proceedings in immigration courts under DOJ.
-            </div>
+          <div class="step child-custody step--green">
+            The child is referred to custody of the Office of Refugee
+            Resettlement within HHS.
+          </div>
+
+          <div class="arrow"></div>
+
+          <div class="step deportation step--green">
+            ICE issues a Notice to Appear to the child, initiating removal
+            proceedings in immigration courts under DOJ.
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
